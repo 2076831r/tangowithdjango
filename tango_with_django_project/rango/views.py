@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from rango.models import Category, Page, UserProfile
+from rango.models import Category, Page
 from rango.forms import CategoryForm, PageForm, UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -180,6 +180,9 @@ def user_login(request):
         else:
             # Bad login details were provided. So we can't log the user in.
             return render(request, 'rango/login.html', {'message': "Your username and/or password was incorrect, please try again."})
+
+
+
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
