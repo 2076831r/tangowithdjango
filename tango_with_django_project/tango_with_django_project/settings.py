@@ -25,13 +25,12 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-TEMPLATE_DIRS = [
+TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows
     # Don't forget to use absolute paths, not relative paths.
     TEMPLATE_PATH,
-
-]
+)
 
 ALLOWED_HOSTS = []
 
@@ -69,6 +68,9 @@ ACCOUNT_ACTIVATION_DAYS = 7     # One-week activation window; you may, of course
 REGISTRATION_AUTO_LOGIN = True  # If True, the user will be automatically logged in.
 LOGIN_REDIRECT_URL = '/rango/'  # The page you want users to arrive at after they successful log in
 LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
+
+EMAIL_HOST='localhost'
+EMAIL_PORT=1025
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases

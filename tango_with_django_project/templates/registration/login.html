@@ -10,5 +10,6 @@
                 <input type="hidden" name="next" value="{{ next }}" />
                 </form>
 
+        <p>Forgotten your password? <a href="{% url 'auth_password_reset' %}">Reset</a></p>
         <p>Not  a member? <a href="{% url 'registration_register' %}">Register</a>!</p>
 {% endblock %}
