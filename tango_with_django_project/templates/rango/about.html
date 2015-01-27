@@ -5,10 +5,14 @@
 {% block title %}About{% endblock %}
 
 {% block body_block %}
-          <h1> Including Static Media</h1>
-          <img src="{% static "images/Me.jpg" %}" alt="Picture of Me" /> <!-- Images -->
-          <br> This was put together by Gregor Robertson, 2076831r
+<div class="page-header" xmlns="http://www.w3.org/1999/html">
+                <h1>About</h1>
+            </div>
+            <div>
+            <p></strong>This is <b>Rango's about page.</b></p>
+            <p><a href="{% url 'index' %}">Click to return to the index page.</a></p>
+            <p></strong>Here is a picture of me.</p>
 
-        <p> visits: {{ visits }}</p>
-
+            <img  width="90" height="100" src="{% static "images/Me.jpg" %}" alt="Picture of Me" /> <!-- New line -->
+            </div>
 {% endblock %}
