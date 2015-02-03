@@ -1,7 +1,6 @@
 import json
 import urllib, urllib2
-import keys
-
+from keys import my_key
 # Add your BING_API_KEY
 
 BING_API_KEY = my_key
@@ -68,3 +67,15 @@ def run_query(search_terms):
 
     # Return the list of results to the calling function.
     return results
+
+def main():
+
+    results = run_query(raw_input("what would you like to search for?"))
+    for i in range(5):
+        print (i + 1)
+        print(results[i]['title'])
+        print(results[i]['link'])
+
+if __name__ == '__main__':
+    main()
+
