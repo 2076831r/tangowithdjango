@@ -9,7 +9,7 @@
                 <form role="form"  id="page_form" method="post" action="/rango/{{category.slug}}/add_page/">
             <h2 class="form-signin-heading">Add a Page to <a href="/rango/category/{{category.slug}}/"> {{ category.name }}</a></h2>
                     {{ form|as_bootstrap }}
-
+                    {% csrf_token %}
                 <br/>
             <button class="btn btn-primary" type="submit" name="submit">Add Page</button>
                 </form>
