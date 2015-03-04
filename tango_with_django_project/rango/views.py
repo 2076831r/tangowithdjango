@@ -83,9 +83,6 @@ def category(request, category_name_slug):
 
     return render(request, 'rango/category.html', context_dict)
 
- #latest_question_list = Question.objects.order_by('-pub_date')[:5]
-  #  context = {'latest_question_list': latest_question_list}
-   # return render(request, 'polls/index.html', context)
 
 @login_required
 def add_category(request):
@@ -172,6 +169,26 @@ def track_url(request):
 
     return redirect(url)
 
+
+def edit_profile(request):
+    if request.method == 'POST':
+
+        users_profile = UserProfile.objects.get(user=request.user)
+        profile_form = UserProfileForm(request.POST, instance=users_profile)
+        if profile_form.is_valid():
+            profile_to_edit = profile_form.save(commit=False)
+            try:
+                profile_to_edit.picture = request.FILES['picture']
+            except:
+                pass
+            profile_to_edit.save()
+            return profile(request)
+    else:
+        form = UserProfileForm(request.GET)
+        return render(request, 'rango/profile_edit.html', {'profile_form': form})
+
+
+@login_required
 def register_profile(request):
     if request.method == 'POST':
         profile_form = UserProfileForm(request.POST)
@@ -180,12 +197,15 @@ def register_profile(request):
                 profile = profile_form.save(commit=False)
                 user = User.objects.get(id=request.user.id)
                 profile.user = user
-                profile.picture = request.FILES['picture']
+                try:
+                    profile.picture = request.FILES['picture']
+                except:
+                    pass
                 profile.save()
-        return index(request)
+                return index(request)
     else:
         form = UserProfileForm(request.GET)
-        return render(request, 'rango/profile_registration.html', {'profile_form': form})
+    return render(request, 'rango/profile_registration.html', {'profile_form': form})
 
 @login_required
 def profile(request):
